@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Link } from 'components/link';
-
 import { TypeComponent_hero } from 'lib/types';
 import { isRichText, renderRichText } from 'lib/rich-text';
 import { ComponentProps } from 'react';
+import Image from 'next/image';
+import imageLoader from '../../image_loader';
 
 export const Hero = ({ fields }: TypeComponent_hero) => {
   const { title, text, ctaText, ctaLink, image } = fields;
@@ -11,7 +12,6 @@ export const Hero = ({ fields }: TypeComponent_hero) => {
   const linkProps: Omit<ComponentProps<typeof Link>, 'children'> = ctaLink
     ? { page: ctaLink }
     : { href: '#' };
-
   return (
     <div className="bg-white mx-auto max-w-screen-xl">
       <div className="px-8 py-20 mx-auto flex flex-wrap flex-col md:flex-row items-start">
@@ -25,7 +25,14 @@ export const Hero = ({ fields }: TypeComponent_hero) => {
           </Link>
         </div>
         <div className="w-full md:w-3/6 text-center py-8 md:py-0">
-          <img className="w-full px-8 z-50 float-right" src={`${image.fields.file.url}?w=960`} />
+          <Image
+            className="w-full px-8 z-50 float-right"
+            src={`https:${image.fields.file.url}`}
+            width={image.fields.file.details.image.width}
+            height={image.fields.file.details.image.height}
+            sizes="(max-width: 768px) 360px, 960px"
+            loader={imageLoader}
+          />
         </div>
       </div>
     </div>

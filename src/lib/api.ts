@@ -1,5 +1,4 @@
 import { createClient } from 'contentful';
-
 import { parsePage } from './pageParsers';
 import { Locale } from './translations';
 

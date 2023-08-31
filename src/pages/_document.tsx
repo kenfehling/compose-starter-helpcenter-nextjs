@@ -9,7 +9,7 @@ class AppDocument extends Document {
 
   render() {
     return (
-      <Html className="font-sans antialiased text-gray-800">
+      <Html className="font-sans antialiased text-gray-800" lang="en">
         <Head />
         <body className="bg-white">
           <Main />

@@ -15,4 +15,10 @@ module.exports = {
     CF_DELIVERY_ACCESS_TOKEN: process.env.CF_DELIVERY_ACCESS_TOKEN,
     CF_PREVIEW_ACCESS_TOKEN: process.env.CF_PREVIEW_ACCESS_TOKEN,
   },
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
+  output: 'export', // GitHub Actions only supports using export
+  distDir: 'out',
+  reactStrictMode: true,
 };
